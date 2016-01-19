@@ -1,0 +1,36 @@
+import java.util.Arrays;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
+
+public class group_Anagrams_49 {
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> res= new ArrayList<List<String>>();
+        if(strs.length == 0 || strs == null)
+        return res;
+        
+        Arrays.sort(strs);
+        HashMap<String, ArrayList<String>> map= new HashMap<String, ArrayList<String>>();
+        for(int i=0;i<strs.length;i++){
+            String[] sarr=strs[i].split("");
+            Arrays.sort(sarr);
+            String ss=Arrays.toString(sarr);
+            if(!map.containsKey(ss)){
+            ArrayList<String> temp= new ArrayList<String>();
+            temp.add(strs[i]);
+            map.put(ss,temp);
+            }else{
+                map.get(ss).add(strs[i]);
+            }
+        }
+        
+        for(ArrayList<String> arr : map.values() ){
+            if(arr != null)
+            res.add(arr);
+        }
+        
+        return res;
+    }
+
+}
