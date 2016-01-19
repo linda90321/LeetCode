@@ -26,9 +26,9 @@ public class group_Anagrams_49 {
         Arrays.sort(strs);
         HashMap<String, ArrayList<String>> map= new HashMap<String, ArrayList<String>>();
         for(int i=0;i<strs.length;i++){
-            String[] sarr=strs[i].split("");
-            Arrays.sort(sarr);
-            String ss=Arrays.toString(sarr);
+            String[] arrS=strs[i].split("");
+            Arrays.sort(arrS);
+            String ss=Arrays.toString(arrS);
             if(!map.containsKey(ss)){
             ArrayList<String> temp= new ArrayList<String>();
             temp.add(strs[i]);
@@ -42,6 +42,7 @@ public class group_Anagrams_49 {
             if(arr != null)
             res.add(arr);
         }
+        
         
         return res;
     }
