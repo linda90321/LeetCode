@@ -1,3 +1,17 @@
+/*242. Valid Anagram My Submissions QuestionEditorial Solution
+Total Accepted: 71149 Total Submissions: 171831 Difficulty: Easy
+Given two strings s and t, write a function to determine if t is an anagram of s.
+
+For example,
+s = "anagram", t = "nagaram", return true.
+s = "rat", t = "car", return false.
+
+Note:
+You may assume the string contains only lowercase alphabets.
+
+Follow up:
+What if the inputs contain unicode characters? How would you adapt your solution to such case?
+ */
 import java.util.HashMap;
 
 public class validAnagram242 {
@@ -24,12 +38,12 @@ public class validAnagram242 {
 				int count = map.get(t.charAt(i));
 				count--;
 				map.put(t.charAt(i), count);
-				if (count == 0)
-					map.remove(t.charAt(i), 0);
+				if (count < 0)
+					return false;
 			} else
 				return false;
 		}
 
-		return map.size() == 0;
+		return true;
 	}
 }
