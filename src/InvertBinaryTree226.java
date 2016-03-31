@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 /*Invert a binary tree.
 
      4
@@ -17,28 +20,42 @@ Google: 90% of our engineers use the software you wrote (Homebrew), but you canâ
 Hide Tags Tree
  */
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
  */
 public class InvertBinaryTree226 {
+	/*
+	 * public TreeNode invertTree(TreeNode root) { if (root == null) return
+	 * null;
+	 * 
+	 * TreeNode left = root.left; TreeNode right = root.right;
+	 * 
+	 * root.left = right; root.right = left;
+	 * 
+	 * invertTree(left); invertTree(right);
+	 * 
+	 * return root; }
+	 */
+
+	// iteration BFS
 	public TreeNode invertTree(TreeNode root) {
 		if (root == null)
-			return null;
+			return root;
+		Queue<TreeNode> queue = new LinkedList<TreeNode>();
+		queue.offer(root);
+		while (!queue.isEmpty()) {
+			TreeNode node = queue.poll();
 
-		TreeNode left = root.left;
-		TreeNode right = root.right;
+			if (node.left != null)
+				queue.offer(node.left);
+			if (node.right != null)
+				queue.offer(node.right);
 
-		root.left = right;
-		root.right = left;
-
-		invertTree(left);
-		invertTree(right);
-
+			TreeNode tmp = node.left;
+			node.left = node.right;
+			node.right = tmp;
+		}
 		return root;
+
 	}
 }
