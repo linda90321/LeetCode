@@ -11,30 +11,29 @@ Could you do it in-place without allocating extra space?*/
 如果是Java，应该跟面试官指出String是immutable，所以需要用char array来做。
 */
 public class reverseWordsInString186 {
-	public static void reverseWords(char[] s) {
-		helper(s,0,s.length-1);
-		int last=0;
-		for(int i=0;i<s.length;i++){
-			if(s[i] == ' '){
-				helper(s,last,i-1);
-				last = i+1;
-			}
-			
-		}
-		
-/*		for(int i=0;i<s.length;i++){
-			System.out.println(s[i]);
-		}*/
-	}
-	public static void helper(char[] s, int i, int j){
-		while(i<=j){
-			char temp =s[i];
-			s[i]=s[j];
-			s[j]=temp;
-			i++;
-			j--;
-		}
-	}
+    public static void reverseWords(char[] s) {
+        if(s.length == 0 || s==null)
+        return;
+        reverse(s,0,s.length-1);
+        int last=0;
+        for(int i=0;i<=s.length;i++){
+            if(i == s.length || s[i]==' ' ){
+                reverse(s,last,i-1);
+                last=i+1;
+            }
+        }
+    }
+    
+    public static void reverse(char[] s , int i,int j){
+        while(i<=j){
+            char temp=s[i];
+            s[i]=s[j];
+            s[j]=temp;
+            i++;
+            j--;
+        }
+    }
+	
 	
 	public static void main(String[] args){
 		char[] s={'t','h','e',' ','s','k','y',' ','i','s',' ','b','l','u','e'};
