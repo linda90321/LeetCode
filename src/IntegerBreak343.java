@@ -16,7 +16,7 @@ Subscribe to see which companies asked this question
 Hide Tags Dynamic Programming Math
 */
 public class IntegerBreak343 {
-/*    //https://leetcode.com/discuss/102706/an-simple-explanation-of-the-math-part-and-a-o-n-solution
+   //https://leetcode.com/discuss/102706/an-simple-explanation-of-the-math-part-and-a-o-n-solution
 	public int integerBreak(int n) {
 		if (n == 2)
 			return 1;
@@ -30,5 +30,5 @@ public class IntegerBreak343 {
 		product *= n;
 
 		return product;
-	}*/
+	}
 }
