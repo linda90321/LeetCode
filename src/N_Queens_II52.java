@@ -1,37 +1,53 @@
-/*The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
+/*Follow up for N-Queens problem.
+
+Now, instead outputting board configurations, return the total number of distinct solutions.
 
 
 
-Given an integer n, return all distinct solutions to the n-queens puzzle.
-
-Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space respectively.
-
-For example,
-There exist two distinct solutions to the 4-queens puzzle:
-
-[
- [".Q..",  // Solution 1
-  "...Q",
-  "Q...",
-  "..Q."],
-
- ["..Q.",  // Solution 2
-  "Q...",
-  "...Q",
-  ".Q.."]
-]
 Subscribe to see which companies asked this question
 
 Hide Tags Backtracking
-Hide Similar Problems (H) N-Queens II
+Hide Similar Problems (H) N-Queens
  */
 import java.util.*;
 
-public class N_Queens51 {
-	public List<List<String>> solveNQueens(int n) {
+public class N_Queens_II52 {
+	int count = 0;
+
+	public int totalNQueens(int n) {
+		if (n == 0)
+			return 0;
+
+		dfs(n, 0, new int[n]);
+		return count;
+	}
+
+	public void dfs(int n, int row, int[] colValid) {
+		if (row == n) {
+			count++;
+			return;
+		}
+
+		for (int col = 0; col < n; col++) {
+			if (isValid(colValid, row, col)) {
+				colValid[row] = col;
+				dfs(n, row + 1, colValid);
+			}
+		}
+	}
+
+	public boolean isValid(int[] colValid, int row, int col) {
+		for (int r = 0; r < row; r++) {
+			if ((col == colValid[r])
+					|| (row - r == Math.abs(col - colValid[r])))
+				return false;
+		}
+		return true;
+	}
+/*	public int totalNQueens(int n) {
 		List<List<String>> res = new ArrayList<List<String>>();
 		if (n == 0)
-			return res;
+			return 0;
 
 		char[][] curr = new char[n][n];
 		for (char[] row : curr)
@@ -39,7 +55,7 @@ public class N_Queens51 {
 
 		boolean[] col_occupied = new boolean[n];
 		help(res, curr, col_occupied, 0, n);
-		return res;
+		return res.size();
 	}
 
 	public void help(List<List<String>> res, char[][] curr,
@@ -78,5 +94,5 @@ public class N_Queens51 {
 		}
 
 		return true;
-	}
+	}*/
 }

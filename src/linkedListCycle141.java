@@ -1,3 +1,13 @@
+/*Given a linked list, determine if it has a cycle in it.
+
+Follow up:
+Can you solve it without using extra space?
+
+Subscribe to see which companies asked this question
+
+Hide Tags Linked List Two Pointers
+Hide Similar Problems (M) Linked List Cycle II
+*/
 public class linkedListCycle141 {
 	public boolean hasCycle(ListNode head) {
 		if (head == null)
@@ -5,7 +15,7 @@ public class linkedListCycle141 {
 
 		ListNode slow = head;
 		ListNode fast = head;
-		while (fast.next != null && fast.next.next != null) {
+		while (fast!= null && fast.next!= null) {
 			slow = slow.next;
 			fast = fast.next.next;
 			if (slow == fast) {
